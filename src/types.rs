@@ -2,12 +2,15 @@ pub fn run() {
     let x = 1;
     let y = 2.5;
     let z = 'a';
+
+    let value = 1i32;
+    println!("Value is {}", value);
+
     let is_active = true;
-    let name = "Ruv";   
+    let name = "Ruv";
     let tuple: (i32, f64, char) = (1, 2.5, 'a');
     let array: [i32; 3] = [1, 2, 3];
-    let q:i64 = 10000000000;
-
+    let q: i64 = 10000000000;
 
     println!("Max of i32 is {}", std::i32::MAX);
     println!("{} {} {} {} {} {}", x, y, z, is_active, name, q);
@@ -15,14 +18,16 @@ pub fn run() {
     println!("First element of the array is {}", array[0]);
 
     #[derive(Debug)]
-    struct Person{
+    struct Person {
         name: String,
         age: u8,
     }
 
-    let p = Person{name: "Ruv".to_string(), age: 30};
+    let p = Person {
+        name: "Ruv".to_string(),
+        age: 30,
+    };
     println!("Person's name is {} and age is {}", p.name, p.age);
     println!("{:?}", p);
     println!("{} is {} now", p.name, p.age);
-
 }
