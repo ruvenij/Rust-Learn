@@ -7,9 +7,11 @@ struct Colour {
 // tuple struct
 struct Point(i32, i32, i32);
 
+#[derive(Debug)]
 struct Person {
     first_name: String,
     last_name: String,
+    age: u32,
 }
 
 impl Person {
@@ -18,11 +20,12 @@ impl Person {
         Person {
             first_name: first.to_string(),
             last_name: last.to_string(),
+            age: 30,
         }
     }
 
     fn print(&self) {
-        println!("Person is {} {}", self.first_name, self.last_name);
+        println!("Person is {} {} {}", self.first_name, self.last_name, self.age);
     }
 
     fn get_name(&self) -> String {
@@ -35,6 +38,29 @@ impl Person {
 
     fn to_tuple(&self) -> (String, String) {
         (self.first_name.clone(), self.last_name.clone())
+    }
+}
+
+struct Rectangle {
+    width: f64,
+    height: f64
+}
+
+impl Rectangle {
+    fn new(width: f64, height: f64) -> Rectangle{
+        Rectangle {
+            width: width,
+            height: height,
+        }
+    }
+
+    fn get_area(&self) -> f64 {
+        self.width * self.height
+    }
+
+    fn scale(&mut self, input: f64) {
+        self.height *= input;
+        self.width *= input;
     }
 }
 
@@ -63,4 +89,18 @@ pub fn run() {
 
     let per_tuple = per1.to_tuple();
     println!("Tuple representation: {:?}", per_tuple);
+
+    let per2 = Person {
+        first_name: String:: from("Sherlock"),
+        last_name: String::from("Holmes"),
+        ..per1 // assign rest of the values from per1
+    };
+
+    println!("Person 2 values : {:?}", per2);
+
+    let mut rect = Rectangle::new(1.2, 3.4);
+    assert_eq!(rect.get_area(), 4.08);
+    rect.scale(0.5);
+    assert_eq!(rect.get_area(), 1.02);
+    println!("Rectangle area after scaling: {}", rect.get_area());
 }

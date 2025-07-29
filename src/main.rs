@@ -2,6 +2,7 @@ mod arrays;
 mod average;
 mod cli;
 mod conditionals;
+mod crates;
 mod enums;
 mod functions;
 mod loops;
@@ -30,4 +31,5 @@ fn main() {
     enums::run();
     cli::run();
     average::find_average();
+    //crates::guess_number();
 }
