@@ -14,6 +14,8 @@ mod tuples;
 mod types;
 mod vars;
 mod vectors;
+mod generic;
+mod traits;
 
 fn main() {
     print::run();
@@ -32,4 +34,6 @@ fn main() {
     cli::run();
     average::find_average();
     //crates::guess_number();
+    generic::run();
+    traits::run();
 }
